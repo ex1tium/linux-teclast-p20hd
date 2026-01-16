@@ -217,16 +217,18 @@ static int wcn_get_loglevel(void)
 }
 
 /* Tab A8 code for P211110-02599 by wangyanjie at 20211213 start */
-static int wcn_set_sdio_pin(unsigned int sdio_pin)
+#ifdef CONFIG_WCN_BOOT
+static int wcn_set_sdio_pin(unsigned int sdio_pin_val)
 {
         char a[64];
         int i=40;
-        scnprintf(a, (size_t)sizeof(a), "%s%d%s", "at+debug=", sdio_pin+i,"\r\n");
-        WCN_INFO("at+debug=%d\n", sdio_pin+i);
+        scnprintf(a, (size_t)sizeof(a), "%s%d%s", "at+debug=", sdio_pin_val+i,"\r\n");
+        WCN_INFO("at+debug=%d\n", sdio_pin_val+i);
         wcn_send_atcmd(a, strlen(a), NULL, NULL);
         WCN_INFO("%s successful\n", __func__);
         return 0;
 }
+#endif
 
 /* Tab A8 code for P211110-02599 by wangyanjie at 20211213 end */
 void wcn_firmware_init(void)
@@ -236,12 +238,13 @@ void wcn_firmware_init(void)
 	wcn_set_loglevel();
 	wcn_get_loglevel();
 
+#ifdef CONFIG_WCN_BOOT
 	/* Tab A8 code for P211110-02599 by wangyanjie at 20211213 start */
         if (sdio_pin >= 0 && sdio_pin <= 7) {
                 wcn_set_sdio_pin(sdio_pin);
         }
-
 	/* Tab A8 code for P211110-02599 by wangyanjie at 20211213 end */
+#endif
 	/* TODO: set can pass functionmask */
 	/* wcn_set_loglevel, etc */
 }
