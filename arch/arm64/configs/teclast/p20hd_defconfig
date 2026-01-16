@@ -4892,3 +4892,25 @@ CONFIG_SBITMAP=y
 # KUnit support
 #
 # CONFIG_TEST is not set
+
+#
+# Disable Samsung-specific drivers (not needed for P20HD)
+#
+# CONFIG_BATTERY_ID_VIA_ADC is not set
+# CONFIG_SEC_MM is not set
+# CONFIG_SEC_INPUT_BOOSTER is not set
+# CONFIG_SEC_EXT is not set
+# CONFIG_HID_SAMSUNG is not set
+# CONFIG_USB_HOST_SAMSUNG_FEATURE is not set
+# CONFIG_SAMSUNG_LMKD_DEBUG is not set
+# CONFIG_INPUT_SEC_CMD is not set
+# CONFIG_INPUT_SEC_SECURE_TOUCH is not set
+# CONFIG_INPUT_SEC_BOOSTER is not set
+# CONFIG_INPUT_SEC_NOTIFIER is not set
+# CONFIG_SEC_KEY_NOTIFIER is not set
+
+# Disable Samsung-specific target configs
+# CONFIG_TARGET_UMS9230_4H10 is not set
+# CONFIG_TARGET_UMS512_1H10 is not set
+# CONFIG_TARGET_UMS512_25C10 is not set
+# CONFIG_UMS512_25C10_CHARGER is not set
