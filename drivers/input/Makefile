@@ -35,5 +35,6 @@ obj-$(CONFIG_INPUT_KEYCOMBO)	+= keycombo.o
 
 obj-$(CONFIG_RMI4_CORE)		+= rmi4/
 # HS03 code for SR-SL6215-01-102 by zhoulingyun at 20210730 start
-obj-y   += sec_cmd.o
+# sec_cmd requires sec_device_create from CONFIG_DRV_SAMSUNG
+obj-$(CONFIG_DRV_SAMSUNG)   += sec_cmd.o
 # HS03 code for SR-SL6215-01-102 by zhoulingyun at 20210730 end

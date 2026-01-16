@@ -158,6 +158,7 @@ static int cts_deinit_pm_fb_notifier(struct chipone_ts_data * cts_data)
 /* HS03 code for SL6215DEV-1018 by yuanliding at 20210909 end */
 
 /* HS03 code for SL6215DEV-2281 by lishuai at 20211002 start */
+#ifdef CONFIG_DRV_SAMSUNG
 static ssize_t cts_read_support_feature(struct device *dev,
     struct device_attribute *attr, char *buf)
 {
@@ -215,6 +216,7 @@ static void cts_deinit_sec_fn(struct chipone_ts_data *cts_data)
     sysfs_remove_group(&cts_data->sec.fac_dev->kobj, &cts_cmd_attr_group);
     sec_cmd_exit(&cts_data->sec, SEC_CLASS_DEVT_TSP);
 }
+#endif /* CONFIG_DRV_SAMSUNG */
 /* HS03 code for SL6215DEV-2281 by lishuai at 20211002 end */
 
 #ifdef CONFIG_CTS_I2C_HOST
@@ -381,11 +383,13 @@ static int cts_driver_probe(struct spi_device *client)
     }
 
     /* HS03 code for SL6215DEV-2281 by lishuai at 20211002 start */
+#ifdef CONFIG_DRV_SAMSUNG
     ret = cts_sec_fn_init(cts_data);
     if (ret) {
         cts_err("failed to init for factory function");
         goto err_deinit_sec_fn;
     }
+#endif
     /* HS03 code for SL6215DEV-2281 by lishuai at 20211002 end */
 
     /* Init firmware upgrade work and schedule */
@@ -420,8 +424,10 @@ err_resume_wp:
 /* HS03 code for P210924-02812 by lishuai at 20211009 end */
 
 /* HS03 code for SL6215DEV-2281 by lishuai at 20211002 start */
+#ifdef CONFIG_DRV_SAMSUNG
 err_deinit_sec_fn:
     cts_deinit_sec_fn(cts_data);
+#endif
 /* HS03 code for SL6215DEV-2281 by lishuai at 20211002 end */
 
 err_deinit_earjack_detect:
