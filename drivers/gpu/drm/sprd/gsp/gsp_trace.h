@@ -86,7 +86,7 @@ TRACE_EVENT(kcfg_put,
 
 #undef TRACE_INCLUDE_PATH
 #undef TRACE_INCLUDE_FILE
-#define TRACE_INCLUDE_PATH .
+#define TRACE_INCLUDE_PATH ../../drivers/gpu/drm/sprd/gsp
 #define TRACE_INCLUDE_FILE gsp_trace
 #include <trace/define_trace.h>
 
