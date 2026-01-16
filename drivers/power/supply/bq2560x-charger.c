@@ -219,8 +219,10 @@ struct bq2560x_charger_reg_tab {
 };
 
 /* HS03 code for P211026-03673 by ditong at 20211105 start */
+#if IS_ENABLED(CONFIG_SND_SOC_SPRD_CODEC_SC2730)
 extern int headset_notifier_register(struct notifier_block *nb);
 extern int headset_notifier_unregister(struct notifier_block *nb);
+#endif
 /* HS03 code for P211026-03673 by ditong at 20211105 end */
 
 static struct bq2560x_charger_reg_tab reg_tab[BQ2560X_REG_NUM + 1] = {
@@ -724,6 +726,7 @@ static int bq2560x_charger_start_charge(struct bq2560x_charger_info *info)
 }
 
 /* HS03 code for P211026-03673 by ditong at 20211105 start */
+#if IS_ENABLED(CONFIG_SND_SOC_SPRD_CODEC_SC2730)
 /**
 *Name : <bq2560x_headset_notifier_callback>
 *Author : <ditong>
@@ -817,6 +820,7 @@ static void  bq2560x_headset_init(struct bq2560x_charger_info *info)
 		dev_err(info->dev,"Unable to register headset_notifier: %d\n",ret);
 	}
 }
+#endif /* CONFIG_SND_SOC_SPRD_CODEC_SC2730 */
 /* HS03 code for P211026-03673 by ditong at 20211105 end */
 
 static void bq2560x_charger_stop_charge(struct bq2560x_charger_info *info)
@@ -2375,7 +2379,9 @@ static int bq2560x_charger_probe(struct i2c_client *client,
 	}
 
 	/* HS03 code for P211026-03673 by ditong at 20211105 start */
+#if IS_ENABLED(CONFIG_SND_SOC_SPRD_CODEC_SC2730)
 	bq2560x_headset_init(info);
+#endif
 	/* HS03 code for P211026-03673 by ditong at 20211105 end */
 
 	bq2560x_charger_stop_charge(info);
@@ -2500,7 +2506,9 @@ static int bq2560x_charger_remove(struct i2c_client *client)
 	usb_unregister_notifier(info->usb_phy, &info->usb_notify);
 
 	/* HS03 code for P211026-03673 by ditong at 20211105 start */
+#if IS_ENABLED(CONFIG_SND_SOC_SPRD_CODEC_SC2730)
 	headset_notifier_unregister(&info->headset_notif);
+#endif
 	/* HS03 code for P211026-03673 by ditong at 20211105 end */
 
 	return 0;
