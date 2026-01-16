@@ -501,7 +501,9 @@ static int sprd_7sreset_probe(struct platform_device *pdev)
 		return ret;
 	}
 
+#if IS_ENABLED(CONFIG_SEC_DEBUG)
 	g_dev = dev;
+#endif
 	platform_set_drvdata(pdev, sprd_7sreset_dev);
 
 	return 0;
