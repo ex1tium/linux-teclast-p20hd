@@ -1,7 +1,0 @@
-*
-!/compat
-!/control
-!.gitignore
-!/kernel-info.mk
-!/rules
-!/source/
