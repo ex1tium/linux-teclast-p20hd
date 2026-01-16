@@ -931,28 +931,36 @@ enum cool_warm_health {
 /* HS03 code for SL6215DEV-729 by lina at 20210903 start */
 enum battery_full_recharge_voltage {
 	/* Tab A8 code for AX6300DEV-2798 by zhaichao at 2021/11/11 start */
-	#ifdef  CONFIG_TARGET_UMS9230_4H10
+	#if defined(CONFIG_TARGET_UMS9230_4H10)
 	CM_FULL_VOLTAGE_HEALTH_WARM = 4175000,
-	#elif  CONFIG_TARGET_UMS512_1H10
+	#elif defined(CONFIG_TARGET_UMS512_1H10)
 	/* Tab A8 code for AX6300DEV-3563 by zhaichao at 20211206 start */
 	CM_FULL_VOLTAGE_HEALTH_WARM = 4160000,
 	/* Tab A8 code for AX6300DEV-3563 by zhaichao at 20211206 start */
+	#else
+	/* Default for non-Samsung devices (e.g., Teclast P20HD) */
+	CM_FULL_VOLTAGE_HEALTH_WARM = 4160000,
 	#endif
 	/* Tab A8 code for AX6300DEV-2798 by zhaichao at 2021/11/11 end */
 	/* Tab A8 code for SR-AX6300-01-3 by qiaodan at 20210906 start */
-	#ifdef CONFIG_TARGET_UMS512_1H10
+	#if defined(CONFIG_TARGET_UMS512_1H10)
 	/* Tab A8 code for AX6300DEV-3574 by zhaichao at 20211209 start */
 	CM_FULL_VOLTAGE_HEALTH_COOLL = 4100000,
 	/* Tab A8 code for AX6300DEV-3574 by zhaichao at 20211209 end */
+	#else
+	CM_FULL_VOLTAGE_HEALTH_COOLL = 4100000,
 	#endif
 	/* Tab A8 code for SR-AX6300-01-3 by qiaodan at 20210906 end */
 /* HS03 code for SL6215DEV-3535 by lina at 20211116 start */
-#ifdef  CONFIG_TARGET_UMS9230_4H10
+#if defined(CONFIG_TARGET_UMS9230_4H10)
 	CM_FULL_VOLTAGE_HEALTH_COOL = 4160000,
-#elif  CONFIG_TARGET_UMS512_1H10
+#elif defined(CONFIG_TARGET_UMS512_1H10)
 	/* Tab A8 code for AX6300DEV-3574 by zhaichao at 20211217 start */
 	CM_FULL_VOLTAGE_HEALTH_COOL = 4300000,
 	/* Tab A8 code for AX6300DEV-3574 by zhaichao at 20211217 end */
+#else
+	/* Default - using P20HD stock max charge voltage 4.4V with some headroom */
+	CM_FULL_VOLTAGE_HEALTH_COOL = 4300000,
 #endif
 /* HS03 code for SL6215DEV-3535 by lina at 20211116 end */
 	/* Tab A8 code for AX6300DEV-3562 by zhaichao at 20211206 start */

@@ -63,6 +63,11 @@ static const char * const power_supply_battery_type_text[] = {
 static const char * const power_supply_battery_type_text[] = {
 "1: Model:HQ-6300NA-ATL", "2: Model:HQ-6300SD-SCUD-BYD","3: Model:HQ-6300SA-SCUD-ATL", "battery-UNKNOWN"
 };
+#else
+/* Default for non-Samsung devices */
+static const char * const power_supply_battery_type_text[] = {
+"battery-UNKNOWN"
+};
 #endif
 /* Tab A8 code for SR-AX6300-01-181 by zhangyanlong at 20210817 end */
 
