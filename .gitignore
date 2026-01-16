@@ -1,3 +1,86 @@
+# Build output directories
 /out/
 /toolchain/
+
+# Droidian build deps
 /linux-android-samsung-a03-build-deps*
+
+#
+# Kernel build artifacts
+#
+
+# Generated files
+*.o
+*.o.*
+*.a
+*.s
+*.ko
+*.ko.cmd
+*.order
+*.mod
+*.mod.c
+*.symtypes
+modules.builtin
+Module.symvers
+*.dwo
+*.su
+*.lst
+
+# Generated/preprocessed files
+*.i
+*.ll
+
+# Build temp files
+.*.cmd
+.*.d
+*.tmp
+.tmp_*
+.cache.mk
+*.gcno
+
+# Linker scripts
+*.lds
+
+# Object archives
+built-in.a
+lib.a
+
+# DTB/DTBO files (generated)
+*.dtb
+*.dtbo
+*.dtb.S
+*.dtb.reverse.dts
+*.dtbo.reverse.dts
+
+# Kernel images (generated)
+arch/arm64/boot/Image
+arch/arm64/boot/Image.gz
+arch/arm64/boot/Image.lz4
+arch/arm64/boot/zImage
+vmlinux
+vmlinux.o
+vmlinux.symvers
+System.map
+
+# VDSO
+arch/*/kernel/vdso/vdso.so*
+arch/*/kernel/vdso/vdso*.lds
+
+# Config files (build-generated)
+.config
+.config.old
+include/config/
+include/generated/
+arch/*/include/generated/
+
+# Version files
+.version
+include/linux/version.h
+
+# Misc build artifacts
+.missing-syscalls.d
+certs/signing_key.*
+certs/x509.genkey
+
+# Crypto assembly (generated)
+arch/arm64/crypto/*-core.S
